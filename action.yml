@@ -3,7 +3,7 @@ description: get action job id by name
 inputs:
     job-name:
         description: job name
-        required: true
+        required: false
 outputs:
     job-id:
         description: job id
