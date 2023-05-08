@@ -1,0 +1,12 @@
+name: get action job id
+description: get action job id by name
+inputs:
+    job-name:
+        description: job name
+        required: true
+outputs:
+    job-id:
+        description: job id
+run:
+    using: node16
+    main: index.js
