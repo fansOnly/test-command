@@ -1,10 +1,22 @@
 name: Test get job id
 on:
-    [push]
+    push:
+        branches:
+            - main
+    pull_request:
+
+defaults:
+    run:
+        shell: bash
+            
 
 jobs:
     test:
-        runs-on: ubuntu-latest
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                os: [macos-latest, windows-latest, ubuntu-latest]
+                version: [1.1.0, 1.0.0]
         name: a job to get id
         steps:
             - name: Checkout
@@ -12,7 +24,7 @@ jobs:
 
             - name: Use action
               id: job
-              uses: ./action.yml
+              uses: ./
               with:
                 job-name: other name
 
