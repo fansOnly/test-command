@@ -1,0 +1,20 @@
+name: Test get job id
+on:
+    [push]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        name: a job to get id
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Use action
+              id: job
+              uses: ./action.yml
+              with:
+                job-name: other name
+
+            - name: get putput
+              run: echo "the job id is ${{ steps.job.outputs }}"
